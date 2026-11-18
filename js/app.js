@@ -989,7 +989,7 @@ async function chooseBackupFolder(){
 })();
 async function exportData(){
   const json=JSON.stringify(S,null,2);
-  const filename="makete_alati_v45_backup_"+new Date().toISOString().slice(0,10)+".json";
+  const filename=(d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"))(new Date())+".json";
   const dirHandle=await getBackupDirHandle(false);
   if(dirHandle){
     try{

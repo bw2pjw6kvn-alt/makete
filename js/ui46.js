@@ -181,7 +181,7 @@
       const json=JSON.stringify(S);
       const write=async name=>{const fh=await h.getFileHandle(name,{create:true});const w=await fh.createWritable();await w.write(json);await w.close();};
       await write("makete_alati_AUTO_backup.json");
-      const day="makete_alati_backup_"+new Date().toISOString().slice(0,10)+".json";
+      const day=(d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"))(new Date())+".json";
       await write(day);
       abLast=Date.now();hasUnexportedChanges=false;updateBackupBadge();abBadge("ok");
       if(force)showToast(`✓ Auto-backup spremljen u "${h.name}"`);

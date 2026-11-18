@@ -100,3 +100,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 ## Novo u 45.37
 - **Zamjenske boje:** u 🎨 Shemi bojanja, kod svake boje koju nemaš, prikazuje se najsličnija boja iz tvog inventara (AK, Real Colors, Vallejo, flomasteri) s ocjenom „vrlo slična / slična / približna”. Na kartici makete ispod sheme je kratki popis zamjena.
 - **Podsjetnik za backup:** ako backup nije napravljen 7 dana, na vrhu se pojavi obavijest s gumbom „💾 Backup sada” (ili „Podsjeti me sutra”). Računa se i ručni i automatski backup. Datum zadnjeg backupa vidi se kad zadržiš miš na gumbu Backup.
+
+## Novo u 45.38
+- Backup se sprema pod imenom koje je samo datum, npr. `2026-11-18.json` (lokalni datum). Automatski backup i dalje sprema i `makete_alati_AUTO_backup.json` kao „zadnju verziju”.
