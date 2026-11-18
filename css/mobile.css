@@ -468,3 +468,8 @@
 .model-scheme .sub56{margin-top:6px}
 .bk56{margin:8px 12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(214,186,96,.55);background:rgba(214,186,96,.12);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;font-size:.9em}
 .bk56-b{display:flex;gap:6px;flex-wrap:wrap}
+
+/* v45.40 broj verzije */
+.ver56{text-align:center;font-size:.72em;opacity:.55;padding:14px 0 18px;letter-spacing:.03em}
+@media (max-width:760px){.ver56{padding-bottom:90px}}
+.ver56-tag{font-size:.6em;opacity:.6;font-weight:400;margin-left:6px}

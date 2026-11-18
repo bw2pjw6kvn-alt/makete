@@ -14,9 +14,9 @@
 <link rel="icon" type="image/svg+xml" href="img/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="css/app.css?v=45.38.0">
-<link rel="stylesheet" href="css/mobile.css?v=45.38.0">
-<script>window.APP_VERSION="45.38.0";window.NO_HD=true;</script>
+<link rel="stylesheet" href="css/app.css?v=45.40.0">
+<link rel="stylesheet" href="css/mobile.css?v=45.40.0">
+<script>window.APP_VERSION="45.40.0";window.NO_HD=true;</script>
 </head>
 <body>
 <div class="boot-splash" id="bootSplash"><img class="boot-img" src="img/logo.svg" alt=""><div class="boot-logo">Makete &amp; Alati</div><div class="boot-spin"></div></div>
@@ -491,7 +491,7 @@
   <button class="btn-sm" onclick="recompressAllUploadedImages()" title="Sažmi sve već učitane slike na manju veličinu (radi pouzdano, bez interneta)">🗜️ Sažmi slike</button>
   <button class="btn-export" id="backupBtn" onclick="exportData()">⬇ Backup</button>
   <button class="btn-sm" id="backupFolderBtn" onclick="chooseBackupFolder()" title="Odaberi mapu (npr. Desktop/Makete) u koju će se Backup ubuduće uvijek spremati izravno - radi u Chrome/Edge pregledniku">📁 Mapa</button>
-  <label class="btn-export" style="cursor:pointer">⬆ Uvezi JSON<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label>
+  <label class="btn-export" style="cursor:pointer">⬆ Uvezi JSON<input type="file" accept=".json,application/json,text/json,text/plain" style="display:none" onchange="importData(event)"></label>
   <label class="btn-export" style="cursor:pointer">⬆ Uvezi CSV<input type="file" accept=".csv" style="display:none" onchange="importCsv(event)"></label>
   <button class="btn-reset" onclick="resetData()">Resetiraj</button>
 </div>
@@ -907,6 +907,6 @@
 
 
 
-<script src="js/boot.js?v=45.38.0"></script>
+<script src="js/boot.js?v=45.40.0"></script>
 </body>
 </html>

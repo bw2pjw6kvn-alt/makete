@@ -103,3 +103,9 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.38
 - Backup se sprema pod imenom koje je samo datum, npr. `2026-11-18.json` (lokalni datum). Automatski backup i dalje sprema i `makete_alati_AUTO_backup.json` kao „zadnju verziju”.
+
+## Novo u 45.39
+- Uvoz backupa na iPhoneu: .json datoteke više nisu zasivljene u izborniku datoteka.
+
+## Novo u 45.40
+- Broj verzije prikazan je na dnu ekrana i u ⚙ Podaci (uz oznaku je li aplikacija otvorena s weba ili lokalno).

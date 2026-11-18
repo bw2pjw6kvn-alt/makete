@@ -1,5 +1,5 @@
 // Service worker — omogućuje rad bez interneta i instalaciju kao aplikacije.
-const VERSION = "45.38.0";
+const VERSION = "45.40.0";
 const CACHE = "makete-" + VERSION;
 const CORE = [
  "./",

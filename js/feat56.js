@@ -108,6 +108,16 @@
     }catch(e){console.warn("sub56card",e);}
     return h;
   };
+
+  // ═════ ℹ️ BROJ VERZIJE (u ⚙ i na dnu ekrana) ═════
+  (function ver56(){
+    const v="v"+(window.APP_VERSION||"?"),where=/^https?:$/.test(location.protocol)?(location.hostname.endsWith("github.io")?"web (GitHub)":"web"):"lokalno";
+    const f=document.createElement("div");f.id="ver56";f.className="ver56";f.textContent="Makete & Alati "+v+" · "+where;document.body.appendChild(f);
+    const m=document.querySelector("#dataModal46 .data46");
+    if(m&&!$("ver56d")){const h=m.querySelector("h3");if(h)h.insertAdjacentHTML("beforeend",` <small class="ver56-tag">${v}</small>`);
+      const d=document.createElement("div");d.id="ver56d";d.className="ekv-hint";d.style.marginTop="8px";
+      d.innerHTML=`ℹ️ Verzija aplikacije: <b>${v}</b> · ${where}`;const last=m.lastElementChild;m.insertBefore(d,last);}
+  })();
   // ═════ 💾 PODSJETNIK ZA BACKUP ═════
   const BK="__lastbk56",SN="__bksnooze56",DAYS=7;
   const now=()=>Date.now();
