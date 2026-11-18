@@ -118,10 +118,25 @@
       const d=document.createElement("div");d.id="ver56d";d.className="ekv-hint";d.style.marginTop="8px";
       d.innerHTML=`ℹ️ Verzija aplikacije: <b>${v}</b> · ${where}`;const last=m.lastElementChild;m.insertBefore(d,last);}
   })();
-  // uvoz: nakon uspješnog uvoza zatvori ⚙ prozor da se odmah vide podaci
+  // uvoz: najprije sami pročitamo datoteku (iPhone/OneDrive znaju šutke ne isporučiti sadržaj),
+  // javimo što se događa, a nakon uspješnog uvoza zatvorimo ⚙ prozor
   const _imp=window.importData;
-  if(_imp)window.importData=function(e){const before=S;const r=_imp.apply(this,arguments);
-    const t=setInterval(()=>{if(S!==before){clearInterval(t);try{closeData46();}catch(x){}}},300);setTimeout(()=>clearInterval(t),120000);return r;};
+  if(_imp)window.importData=async function(e){
+    const inp=e&&e.target,f=inp&&inp.files&&inp.files[0];if(!f)return;
+    const mb=(f.size/1048576).toFixed(1);
+    try{showToast(`📂 Učitavam ${f.name} (${mb} MB)…`);}catch(x){}
+    let txt="";
+    try{txt=await f.text();}catch(err){txt="";console.warn("uvoz",err);}
+    try{inp.value="";}catch(x){}
+    if(!txt||!txt.trim()){
+      alert(`Datoteku „${f.name}” nije moguće pročitati (${f.size?mb+" MB":"prazna"}).\n\nAko je u OneDriveu ili iCloudu, prvo je preuzmi na mobitel: u aplikaciji Datoteke dodirni je jednom da se otvori (ili zadrži prst → Preuzmi), pa ponovo pokreni uvoz. Možeš je i kopirati u „Na mom iPhoneu”.`);
+      return;
+    }
+    const before=S;
+    const nf=new File([txt],f.name,{type:"application/json"});
+    _imp.call(this,{target:{files:[nf],value:""}});
+    const t=setInterval(()=>{if(S!==before){clearInterval(t);try{closeData46();}catch(x){}}},300);setTimeout(()=>clearInterval(t),120000);
+  };
   // ═════ 💾 PODSJETNIK ZA BACKUP ═════
   const BK="__lastbk56",SN="__bksnooze56",DAYS=7;
   const now=()=>Date.now();

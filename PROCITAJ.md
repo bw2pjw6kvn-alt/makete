@@ -112,3 +112,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.41
 - Popravak uvoza: prozor za potvrdu uvoza bio je skriven iza ⚙ prozora (na mobitelu se činilo da se ništa ne događa). Sada je potvrda na vrhu, a nakon uvoza ⚙ se sam zatvori.
+
+## Novo u 45.42
+- Uvoz: odmah se prikaže „Učitavam … MB”, a ako se datoteka ne može pročitati (npr. nije preuzeta iz OneDrivea/iClouda), aplikacija to jasno javi.
