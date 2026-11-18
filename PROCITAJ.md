@@ -109,3 +109,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.40
 - Broj verzije prikazan je na dnu ekrana i u ⚙ Podaci (uz oznaku je li aplikacija otvorena s weba ili lokalno).
+
+## Novo u 45.41
+- Popravak uvoza: prozor za potvrdu uvoza bio je skriven iza ⚙ prozora (na mobitelu se činilo da se ništa ne događa). Sada je potvrda na vrhu, a nakon uvoza ⚙ se sam zatvori.

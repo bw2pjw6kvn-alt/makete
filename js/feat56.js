@@ -118,6 +118,10 @@
       const d=document.createElement("div");d.id="ver56d";d.className="ekv-hint";d.style.marginTop="8px";
       d.innerHTML=`ℹ️ Verzija aplikacije: <b>${v}</b> · ${where}`;const last=m.lastElementChild;m.insertBefore(d,last);}
   })();
+  // uvoz: nakon uspješnog uvoza zatvori ⚙ prozor da se odmah vide podaci
+  const _imp=window.importData;
+  if(_imp)window.importData=function(e){const before=S;const r=_imp.apply(this,arguments);
+    const t=setInterval(()=>{if(S!==before){clearInterval(t);try{closeData46();}catch(x){}}},300);setTimeout(()=>clearInterval(t),120000);return r;};
   // ═════ 💾 PODSJETNIK ZA BACKUP ═════
   const BK="__lastbk56",SN="__bksnooze56",DAYS=7;
   const now=()=>Date.now();

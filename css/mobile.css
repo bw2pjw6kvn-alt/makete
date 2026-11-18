@@ -473,3 +473,6 @@
 .ver56{text-align:center;font-size:.72em;opacity:.55;padding:14px 0 18px;letter-spacing:.03em}
 @media (max-width:760px){.ver56{padding-bottom:90px}}
 .ver56-tag{font-size:.6em;opacity:.6;font-weight:400;margin-left:6px}
+
+/* v45.41 potvrde (npr. uvoz) uvijek iznad ⚙ prozora */
+#customDialogModal{z-index:3000 !important}
