@@ -118,3 +118,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.43
 - 🧭 Redoslijed izrade: uz svaki korak piše čime ga napraviti – proizvodi koje imaš (klik otvara proizvod), alat (airbrush, razrjeđivač) i kratki savjet. Gore odabereš maketu pa koraci 4 i 5 pokazuju boje njezine sheme bojanja (uz zamjenu ako boju nemaš).
+
+## Novo u 45.44
+- Popravak ažuriranja: nova verzija se više ne može „pomiješati” sa starom (svježe datoteke s poslužitelja, a otvaranje aplikacije uvijek uzima novi index.html kad ima interneta).

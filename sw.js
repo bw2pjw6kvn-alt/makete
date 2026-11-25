@@ -1,5 +1,5 @@
 // Service worker — omogućuje rad bez interneta i instalaciju kao aplikacije.
-const VERSION = "45.43.0";
+const VERSION = "45.44.0";
 const CACHE = "makete-" + VERSION;
 const CORE = [
  "./",
@@ -157,7 +157,8 @@ const CORE = [
 ];
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  // cache:"reload" = uvijek svježe s poslužitelja (ne iz HTTP predmemorije preglednika), da se verzije ne pomiješaju
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE.map(u => new Request(u, {cache: "reload"})))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(
@@ -188,6 +189,14 @@ self.addEventListener("fetch", e => {
       if (hit) return hit;
       const res = await fetch(req); if (res.ok) c.put(req, res.clone()); return res;
     }));
+    return;
+  }
+  // otvaranje aplikacije (index.html): najprije mreža (svježa verzija), bez interneta iz predmemorije
+  if (req.mode === "navigate"){
+    e.respondWith(fetch(req, {cache: "no-store"}).then(res => {
+      if (res.ok){ const copy = res.clone(); caches.open(CACHE).then(c => c.put("index.html", copy)); }
+      return res;
+    }).catch(() => caches.match("index.html", {ignoreSearch: true}).then(r => r || caches.match("./"))));
     return;
   }
   // vlastite datoteke: najprije predmemorija (ignoriraj ?v= parametar), zatim mreža
