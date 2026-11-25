@@ -1392,11 +1392,8 @@ function renderStats(){
    <div class="stat"><span class="stat-val wish">${S.zelje.length}</span><span class="stat-lbl">Želje</span></div>
    <div class="stat-sep"></div>
    <div class="stat"><span class="stat-val model">${S.makete.length}</span><span class="stat-lbl">Makete</span></div>
-   ${combinedValue>0?`<div class="stat-sep"></div><div class="stat" title="${esc(valueTitle)}"><span class="stat-val" style="color:var(--gold)">${valueStr}</span><span class="stat-lbl">Vrijednost (boje+makete)</span></div>`:""}
    <div class="stat-sep"></div>
    <div class="stat" title="U izradi / planirano"><span class="stat-val model">${S.makete.filter(m=>m.status==="wip").length}</span><span class="stat-lbl">U izradi</span></div>
-   <div class="stat-sep"></div>
-   <div class="stat" title="Ukupno plaćeno po računima u ${new Date().getFullYear()}."><span class="stat-val" style="color:var(--narudzba)">${fmt((S.narudzbe||[]).filter(o=>new Date(o.date||0).getFullYear()===new Date().getFullYear()).reduce((a,o)=>a+orderPaidOrSum(o),0))}</span><span class="stat-lbl">Potrošeno ${new Date().getFullYear()}.</span></div>
    <div class="stat-sep"></div>
    <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
    <div class="progress-lbl">${pct}% kompletno</div></div>`;
@@ -1479,7 +1476,7 @@ function renderInv(){
   for(const cat of orderedCats()){
     const cd=S.inventar[cat];if(!cd)continue;
     let fil=cd.items.filter(i=>{
-      const mQ=!q||i.name.toLowerCase().includes(q)||i.code.toLowerCase().includes(q)||(i.mfr||"").toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||(i.tags||[]).some(t=>t.toLowerCase().includes(q));
+      const mQ=!q||i.name.toLowerCase().includes(q)||i.code.toLowerCase().includes(q)||(i.mfr||"").toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||(i.tags||[]).some(t=>t.toLowerCase().includes(q))||(window.ralRefs60&&ralRefs60(i).some(x=>(x.sys+" "+x.num).toLowerCase().includes(q)||x.num===q.trim()));
       const mF=filter==="all"||i.status===filter;
       const mT=!activeTag||(i.tags||[]).includes(activeTag);
       const mM=!activeMfr||i.mfr===activeMfr;
@@ -1722,7 +1719,7 @@ function toggleCat(cat){
   if(!open&&el.children.length===0){
     const q=search.toLowerCase();
     const fil=S.inventar[cat].items.filter(i=>{
-      const mQ=!q||i.name.toLowerCase().includes(q)||i.code.toLowerCase().includes(q)||(i.mfr||"").toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||(i.tags||[]).some(t=>t.toLowerCase().includes(q));
+      const mQ=!q||i.name.toLowerCase().includes(q)||i.code.toLowerCase().includes(q)||(i.mfr||"").toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||(i.tags||[]).some(t=>t.toLowerCase().includes(q))||(window.ralRefs60&&ralRefs60(i).some(x=>(x.sys+" "+x.num).toLowerCase().includes(q)||x.num===q.trim()));
       const mF=filter==="all"||i.status===filter;
       const mT=!activeTag||(i.tags||[]).includes(activeTag);
       const mM=!activeMfr||i.mfr===activeMfr;
@@ -2686,7 +2683,7 @@ function renderMakete(){
     // ručno upisane cijene na kartici makete.
     const withPrice=S.makete.map(m=>({m,val:getReceiptPriceFor("makete",m.id)})).filter(x=>x.val>0);
     const sum=withPrice.reduce((s,x)=>s+x.val,0);
-    totalEl.textContent=sum>0?`Ukupna vrijednost maketa: ${sum.toLocaleString("hr-HR",{minimumFractionDigits:2,maximumFractionDigits:2})} € (${withPrice.length}/${S.makete.length} iz Računa)`:"";
+    totalEl.textContent="";if(false)totalEl.textContent=sum>0?`Ukupna vrijednost maketa: ${sum.toLocaleString("hr-HR",{minimumFractionDigits:2,maximumFractionDigits:2})} € (${withPrice.length}/${S.makete.length} iz Računa)`:"";
   }
 }
 function buildModelCard(m){

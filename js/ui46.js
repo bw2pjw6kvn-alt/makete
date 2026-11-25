@@ -161,7 +161,11 @@
     const max=Math.max(...months.map(x=>x.v),1);
     const MN=["sij","velj","ožu","tra","svi","lip","srp","kol","ruj","lis","stu","pro"];
     const byShop={};O.forEach(o=>{const s=o.shop||"ostalo";byShop[s]=(byShop[s]||0)+orderPaidOrSum(o);});
-    el.innerHTML=`<div class="sum46-box"><b>${fmt(total)}</b><span>ukupno (${O.length} računa)</span></div>
+    const allI=Object.values(S.inventar).flatMap(c=>c.items||[]);
+    const invV=allI.filter(i=>i.status==="imam").reduce((a,i)=>a+getReceiptPriceFor("inventar",i.id),0),mkV=(S.makete||[]).reduce((a,m)=>a+getReceiptPriceFor("makete",m.id),0);
+    const mkN=(S.makete||[]).filter(m=>getReceiptPriceFor("makete",m.id)>0).length;
+    el.innerHTML=`<div class="sum46-box" title="Boje i pribor: ${fmt(invV)} · Makete: ${fmt(mkV)} (${mkN}/${(S.makete||[]).length} s cijenom iz Računa)"><b>${fmt(invV+mkV)}</b><span>vrijednost (boje ${fmt(invV)} + makete ${fmt(mkV)})</span></div>
+      <div class="sum46-box"><b>${fmt(total)}</b><span>ukupno (${O.length} računa)</span></div>
       ${Object.keys(byY).sort().reverse().map(y=>`<div class="sum46-box"><b>${fmt(byY[y])}</b><span>${y}.${Number(y)===yNow?" (ova godina)":""}</span></div>`).join("")}
       <div class="spend46-chart" title="Potrošnja zadnjih 12 mjeseci">${months.map(x=>`<div class="spend46-col" title="${MN[x.m]} ${x.y}: ${fmt(x.v)}"><div class="spend46-bar" style="height:${Math.round(x.v/max*100)}%"></div><span>${MN[x.m]}</span></div>`).join("")}</div>
       <div class="sum46-hint">Trgovine: ${Object.entries(byShop).sort((a,b)=>b[1]-a[1]).map(([s,v])=>`${esc(s)} ${fmt(v)}`).join(" · ")}</div>`;

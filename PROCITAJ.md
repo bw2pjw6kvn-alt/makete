@@ -124,3 +124,13 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.45
 - ☁️ Automatska sinkronizacija računalo ↔ mobitel preko tajnog GitHub Gista: jednom po uređaju zalijepiš GitHub token (⚙ → Sinkronizacija), dalje se izmjene šalju i preuzimaju same. Ikona ☁️ gore pokazuje stanje (✓ usklađeno, ↑ šaljem, ↓ preuzimam, ⚠ greška).
+
+## Novo u 45.46
+- ← Natrag: gumb lijevo od loga (i plutajući ← kad je otvoren prozor) vraća korak nazad – zatvara otvoreni prozor ili se vraća na prethodnu stranicu. Radi i tipka/gesta „natrag” na mobitelu i mišu.
+- 🎨 Boja proizvoda → RAL/naziv: upiši samo broj (npr. 8020, 7027, 7028), „FS 33446” ili „RLM 79” i odmah se nude nijanse – uključeni su i ratni RAL-ovi (7027 Grau, 8020 Braun, 7017 Dunkelbraun, 8000 Gelbbraun…).
+
+## Novo u 45.47
+- Vrijednost i Potrošeno uklonjeni s gornje trake (i „Ukupna vrijednost maketa” s Maketa). Sada su samo u 🧾 Računi, gdje je i nova kućica „vrijednost (boje + makete)”.
+
+## Novo u 45.48
+- RAL / FS / RLM oznake za sve AK boje iz tablica (3Gen, Real Colors, RC Markers – preko 500 šifri) i za Vallejo boje s RAL-om u nazivu: prikazane su na kartici proizvoda, u Uredi proizvod (klik dodaje nijansu) i u pretrazi Inventara (npr. upiši „7021”).

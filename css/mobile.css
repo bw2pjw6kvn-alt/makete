@@ -497,3 +497,19 @@
 .sync58-how{font-size:.82em;margin-top:6px;opacity:.9}
 .sync58-how ol{padding-left:18px;margin:6px 0}
 #sync58Row input{padding:6px 8px}
+
+/* v45.46 natrag + pretraga RAL */
+.back59{background:transparent;border:1px solid var(--border2,#444);color:var(--text,#ddd);border-radius:8px;width:34px;height:34px;font-size:18px;line-height:1;display:inline-flex;align-items:center;justify-content:center;margin-right:8px;cursor:pointer;flex:none}
+.back59f{position:fixed;left:10px;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:2500;background:var(--surface2,#1e2228);box-shadow:0 2px 10px rgba(0,0,0,.4);width:40px;height:40px;font-size:20px}
+.csugg59{display:flex;flex-direction:column;gap:2px;margin:4px 0;max-height:240px;overflow:auto}
+.csugg59 button{display:flex;align-items:center;gap:8px;text-align:left;padding:6px 8px;border-radius:6px;border:1px solid var(--border2,#444);background:var(--surface3,#222);color:inherit;font-size:13px;cursor:pointer}
+.csugg59 button .color-swatch{width:16px;height:16px;border-radius:4px;flex:none;display:inline-block}
+.csugg59-none{font-size:12px;opacity:.7;padding:4px}
+
+/* v45.48 RAL oznake */
+.ral60{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 4px}
+.ral60-p{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-family:'DM Mono',monospace;padding:1px 6px;border-radius:8px;border:1px solid rgba(201,178,122,.45);color:#d8c38a;background:rgba(201,178,122,.08);letter-spacing:.02em}
+button.ral60-p{cursor:pointer;font-size:12px;padding:3px 8px}
+.ral60-p .color-swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+.ral60-hint{font-size:12px;margin:6px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+:root[data-theme="dnevna"] .ral60-p,:root[data-theme="dak-svijetla"] .ral60-p{color:#7a5a14}
