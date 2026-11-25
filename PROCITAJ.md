@@ -121,3 +121,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.44
 - Popravak ažuriranja: nova verzija se više ne može „pomiješati” sa starom (svježe datoteke s poslužitelja, a otvaranje aplikacije uvijek uzima novi index.html kad ima interneta).
+
+## Novo u 45.45
+- ☁️ Automatska sinkronizacija računalo ↔ mobitel preko tajnog GitHub Gista: jednom po uređaju zalijepiš GitHub token (⚙ → Sinkronizacija), dalje se izmjene šalju i preuzimaju same. Ikona ☁️ gore pokazuje stanje (✓ usklađeno, ↑ šaljem, ↓ preuzimam, ⚠ greška).

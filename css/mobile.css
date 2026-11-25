@@ -489,3 +489,11 @@
 .st57-tip{font-size:.78em;opacity:.8;margin-top:4px}
 :root[data-theme="dnevna"] .st57-c,:root[data-theme="dak-svijetla"] .st57-c{color:#2f6b37}
 :root[data-theme="dnevna"] .st57-c.no,:root[data-theme="dak-svijetla"] .st57-c.no{color:#9a4a22}
+
+/* v45.45 sinkronizacija */
+.sync58-btn{min-width:38px}
+.sync58-btn[data-st="err"]{border-color:rgba(214,110,80,.8);color:#e89a7a}
+.sync58-btn[data-st="ok"]{color:#9fd8a5}
+.sync58-how{font-size:.82em;margin-top:6px;opacity:.9}
+.sync58-how ol{padding-left:18px;margin:6px 0}
+#sync58Row input{padding:6px 8px}
