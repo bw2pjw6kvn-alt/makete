@@ -115,3 +115,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.42
 - Uvoz: odmah se prikaže „Učitavam … MB”, a ako se datoteka ne može pročitati (npr. nije preuzeta iz OneDrivea/iClouda), aplikacija to jasno javi.
+
+## Novo u 45.43
+- 🧭 Redoslijed izrade: uz svaki korak piše čime ga napraviti – proizvodi koje imaš (klik otvara proizvod), alat (airbrush, razrjeđivač) i kratki savjet. Gore odabereš maketu pa koraci 4 i 5 pokazuju boje njezine sheme bojanja (uz zamjenu ako boju nemaš).

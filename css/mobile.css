@@ -476,3 +476,16 @@
 
 /* v45.41 potvrde (npr. uvoz) uvijek iznad ⚙ prozora */
 #customDialogModal{z-index:3000 !important}
+
+/* v45.43 Redoslijed izrade – „Čime” */
+.st57-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.st57-bar select{max-width:100%;padding:4px 6px}
+.st57-td{margin-top:6px;padding-top:6px;border-top:1px dashed rgba(127,127,127,.3)}
+.st57-c{display:inline-flex;align-items:center;gap:4px;margin:2px 4px 2px 0;padding:2px 7px;border-radius:10px;font-size:.82em;border:1px solid rgba(110,190,120,.55);color:#a8dcae;cursor:pointer;line-height:1.35}
+.st57-c.no{border-color:rgba(214,130,96,.55);color:#e0a080;cursor:default}
+.st57-c .color-swatch{width:11px;height:11px;border-radius:3px;display:inline-block}
+.st57-lbl{font-size:.8em;opacity:.75;margin:2px 0}
+.st57-tools{margin-top:3px}
+.st57-tip{font-size:.78em;opacity:.8;margin-top:4px}
+:root[data-theme="dnevna"] .st57-c,:root[data-theme="dak-svijetla"] .st57-c{color:#2f6b37}
+:root[data-theme="dnevna"] .st57-c.no,:root[data-theme="dak-svijetla"] .st57-c.no{color:#9a4a22}
