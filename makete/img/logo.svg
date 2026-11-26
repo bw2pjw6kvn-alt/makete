@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+ <polygon points="256.0,20.0 460.4,138.0 460.4,374.0 256.0,492.0 51.6,374.0 51.6,138.0" fill="#14171b" stroke="#c2a04a" stroke-width="16" stroke-linejoin="round"/>
+ <polygon points="256.0,48.0 436.1,152.0 436.1,360.0 256.0,464.0 75.9,360.0 75.9,152.0" fill="none" stroke="#c2a04a" stroke-opacity=".35" stroke-width="3"/>
+ <g transform="translate(372,108) rotate(153.43)">
+ <path d="M0,-10.0 L121.99986885238853,-8.4 L121.99986885238853,8.4 L0,10.0 Q-10,0 0,-10.0Z" fill="#8a5a2b"/>
+ <rect x="121.99986885238853" y="-12.0" width="31.48383712319704" height="24.0" rx="3" fill="#b9bfc6"/>
+ <path d="M153.48370597558556,-12.0 Q186.9352829189824,-11.0 196.7739820199815,0 Q186.9352829189824,11.0 153.48370597558556,12.0Z" fill="#c2a04a"/>
+ <path d="M177.09658381798334,-7.0 Q192.83850237958188,-4.0 196.7739820199815,0 Q192.83850237958188,4.0 177.09658381798334,7.0Z" fill="#6b7a3a"/>
+</g>
+ <path d="M178 214 q-10 16 0 24 q10 -8 0 -24z" fill="#6b7a3a"/>
+ <g transform="translate(0,24) scale(1)">
+ <rect x="122" y="290" width="270" height="58" rx="29" fill="#c2a04a"/><circle cx="158" cy="319" r="17" fill="#14171b"/><circle cx="158" cy="319" r="6" fill="#c2a04a"/><circle cx="198" cy="319" r="17" fill="#14171b"/><circle cx="198" cy="319" r="6" fill="#c2a04a"/><circle cx="238" cy="319" r="17" fill="#14171b"/><circle cx="238" cy="319" r="6" fill="#c2a04a"/><circle cx="278" cy="319" r="17" fill="#14171b"/><circle cx="278" cy="319" r="6" fill="#c2a04a"/><circle cx="318" cy="319" r="17" fill="#14171b"/><circle cx="318" cy="319" r="6" fill="#c2a04a"/><circle cx="358" cy="319" r="17" fill="#14171b"/><circle cx="358" cy="319" r="6" fill="#c2a04a"/>
+ <polygon points="132,292 152,256 372,256 390,292" fill="#c2a04a"/>
+ <polygon points="204,258 220,220 300,220 318,258" fill="#c2a04a"/>
+ <rect x="268" y="205" width="24" height="18" rx="4" fill="#c2a04a"/>
+ <rect x="300" y="229" width="112" height="11" rx="2" fill="#c2a04a"/>
+ <rect x="404" y="225" width="18" height="19" rx="3" fill="#c2a04a"/>
+ <rect x="122" y="286" width="270" height="7" fill="#14171b"/>
+</g>
+ <text x="256" y="420" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-weight="700" font-size="30" letter-spacing="6" fill="#c2a04a">M&amp;A</text>
+</svg>
