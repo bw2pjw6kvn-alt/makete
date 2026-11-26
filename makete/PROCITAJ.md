@@ -137,3 +137,6 @@ Na webu zamijeni datoteke novom verzijom (na Netlifyju napraviš novi deploy). A
 
 ## Novo u 45.49
 - Preraspodijeljeni gumbi za RAL oznake u Uredi proizvod da bude jasnije što je što: poznate oznake tog proizvoda (gumbi za jedan klik) su sada unutar taba „RAL / naziv”, odmah iznad polja za ručnu pretragu druge oznake – i ta dva se više ne miješaju vizualno. Ako proizvod ima poznatu oznaku, taj tab se sam otvori čim otvoriš Uredi proizvod, bez dodatnog klikanja.
+
+## Novo u 45.50
+- 🗑 Koš (⚙ Podaci): pamti zadnjih 20 obrisanih stavki (do 30 dana) – proizvode, želje, račune, stavke računa, makete, recepte i izvore – s gumbom „↩ Vrati”. Koš se sam sinkronizira na drugi uređaj, pa vraća i ono što se u međuvremenu automatski izbrisalo i tamo.

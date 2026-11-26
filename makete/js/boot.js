@@ -9,7 +9,7 @@
   const DB_NAME = "makete_app_db", STORE = "kv", DB_VER = 1;
   const MIGRATED_FLAG = "__migrated_from_localStorage";
   const APP_KEY_RE = /^ak_inv_v\d+$/;   // ključevi podataka aplikacije (v44, v10, v9…)
-  const SCRIPTS = ["js/seed.js", "js/oznake-data.js", "js/app.js", "js/mobile.js", "js/links46.js", "js/oznake46.js", "js/ui46.js", "js/feat47.js", "js/prirucnici.js", "js/knjige.js", "js/lib48.js", "js/ui49.js", "js/add50.js", "js/schemes51.js", "js/diorama52.js", "js/scale53.js", "js/feat56.js", "js/steps57.js", "js/sync58.js", "js/nav59.js", "js/ral60.js"];
+  const SCRIPTS = ["js/seed.js", "js/oznake-data.js", "js/app.js", "js/mobile.js", "js/links46.js", "js/oznake46.js", "js/ui46.js", "js/feat47.js", "js/prirucnici.js", "js/knjige.js", "js/lib48.js", "js/ui49.js", "js/add50.js", "js/schemes51.js", "js/diorama52.js", "js/scale53.js", "js/feat56.js", "js/steps57.js", "js/sync58.js", "js/nav59.js", "js/ral60.js", "js/trash61.js"];
 
   const cache = new Map();
   let db = null;

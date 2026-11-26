@@ -516,3 +516,11 @@ button.ral60-p{cursor:pointer;font-size:12px;padding:3px 8px}
 .ral60-hint-row{display:flex;flex-wrap:wrap;gap:6px}
 .ral60-searchlbl{font-size:11px;color:var(--muted);margin:0 0 4px}
 :root[data-theme="dnevna"] .ral60-p,:root[data-theme="dak-svijetla"] .ral60-p{color:#7a5a14}
+
+/* v45.50 Koš (trash61) */
+.trash61-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:7px 0;border-bottom:1px solid var(--border2,#333)}
+.trash61-row:last-child{border-bottom:none}
+.trash61-i{flex:1 1 auto;min-width:0;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trash61-tag{font-size:10px;color:var(--muted);margin-right:4px}
+.trash61-m{flex:none;font-size:10.5px;color:var(--muted);font-family:'DM Mono',monospace}
+.trash61-b{flex:none;display:flex;gap:4px}
