@@ -197,7 +197,20 @@
   // Service worker (rad bez interneta) — samo kad je aplikacija na http(s) adresi
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("sw.js").catch(e => console.warn("SW:", e));
+      // počisti staru/krivu registraciju iz vremena prije nego su datoteke premještene u root (dupli "/makete/makete/")
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        regs.forEach(r => { if (/\/makete\/makete\//.test(r.scope)) r.unregister().catch(() => {}); });
+      }).catch(() => {});
+      navigator.serviceWorker.register("sw.js").then(reg => {
+        // Preglednik sam provjerava ima li nova verzija sw.js tek otprilike jednom dnevno,
+        // pa to ovdje tražimo i sami: odmah, kod svakog povratka u aplikaciju i povremeno
+        // dok je otvorena — inače se nova verzija zna "zaglaviti" i ne javiti se satima.
+        const check = () => { try{ reg.update(); }catch(e){} };
+        check();
+        document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") check(); });
+        window.addEventListener("online", check);
+        setInterval(() => { if (document.visibilityState === "visible") check(); }, 5 * 60 * 1000);
+      }).catch(e => console.warn("SW:", e));
       // nova verzija s weba: ponudi osvježavanje
       const had = !!navigator.serviceWorker.controller;
       navigator.serviceWorker.addEventListener("controllerchange", () => {
