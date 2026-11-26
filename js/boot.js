@@ -9,7 +9,7 @@
   const DB_NAME = "makete_app_db", STORE = "kv", DB_VER = 1;
   const MIGRATED_FLAG = "__migrated_from_localStorage";
   const APP_KEY_RE = /^ak_inv_v\d+$/;   // ključevi podataka aplikacije (v44, v10, v9…)
-  const SCRIPTS = ["js/seed.js", "js/oznake-data.js", "js/app.js", "js/mobile.js", "js/links46.js", "js/oznake46.js", "js/ui46.js", "js/feat47.js", "js/prirucnici.js", "js/knjige.js", "js/lib48.js", "js/ui49.js", "js/add50.js", "js/schemes51.js", "js/diorama52.js", "js/scale53.js", "js/feat56.js", "js/steps57.js", "js/sync58.js", "js/nav59.js", "js/ral60.js"];
+  const SCRIPTS = ["js/seed.js", "js/oznake-data.js", "js/app.js", "js/mobile.js", "js/links46.js", "js/oznake46.js", "js/ui46.js", "js/feat47.js", "js/prirucnici.js", "js/knjige.js", "js/lib48.js", "js/ui49.js", "js/add50.js", "js/schemes51.js", "js/diorama52.js", "js/scale53.js", "js/feat56.js", "js/steps57.js", "js/sync58.js", "js/nav59.js", "js/ral60.js", "js/trash61.js"];
 
   const cache = new Map();
   let db = null;
@@ -197,7 +197,20 @@
   // Service worker (rad bez interneta) — samo kad je aplikacija na http(s) adresi
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("sw.js").catch(e => console.warn("SW:", e));
+      // počisti staru/krivu registraciju iz vremena prije nego su datoteke premještene u root (dupli "/makete/makete/")
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        regs.forEach(r => { if (/\/makete\/makete\//.test(r.scope)) r.unregister().catch(() => {}); });
+      }).catch(() => {});
+      navigator.serviceWorker.register("sw.js").then(reg => {
+        // Preglednik sam provjerava ima li nova verzija sw.js tek otprilike jednom dnevno,
+        // pa to ovdje tražimo i sami: odmah, kod svakog povratka u aplikaciju i povremeno
+        // dok je otvorena — inače se nova verzija zna "zaglaviti" i ne javiti se satima.
+        const check = () => { try{ reg.update(); }catch(e){} };
+        check();
+        document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") check(); });
+        window.addEventListener("online", check);
+        setInterval(() => { if (document.visibilityState === "visible") check(); }, 5 * 60 * 1000);
+      }).catch(e => console.warn("SW:", e));
       // nova verzija s weba: ponudi osvježavanje
       const had = !!navigator.serviceWorker.controller;
       navigator.serviceWorker.addEventListener("controllerchange", () => {

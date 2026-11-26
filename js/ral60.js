@@ -66,23 +66,33 @@
   if(_bci)window.buildColorSearchIndex=function(){const r=_bci.apply(this,arguments);try{extras();}catch(e){}return r;};
   try{extras();}catch(e){}
 
-  // ── Uredi proizvod: ponudi oznaku ove boje ──
+  // ── Uredi proizvod: ponudi oznaku ove boje — unutar taba "RAL / naziv", odmah iznad pretrage ──
+  // Tako je jasno da su to DVIJE različite stvari: gumbi gore = već poznate oznake OVOG proizvoda
+  // (jedan klik = dodano), polje ispod = ručna pretraga bilo koje druge RAL/FS/RLM/nazvane boje.
   let curItem=null;
   const _oe=window.openEditProd;
   if(_oe)window.openEditProd=function(cat,id){
     const r=_oe.apply(this,arguments);
-    try{curItem=((S.inventar[cat]||{}).items||[]).find(i=>i.id===id)||null;hint();}catch(e){}
+    try{
+      curItem=((S.inventar[cat]||{}).items||[]).find(i=>i.id===id)||null;
+      hint();
+      // ako proizvod ima poznatu oznaku, odmah otvori tab "RAL / naziv" da se gumbi vide bez dodatnog klika
+      const L=curItem?refsFor(curItem).filter(x=>x.sw):[];
+      if(L.length){const tabs=document.querySelectorAll("#pmSwatchTabsWrap .img-tab");if(tabs[1]&&typeof setSwatchInputMode==="function")setSwatchInputMode("ral",tabs[1]);}
+    }catch(e){}
     return r;
   };
   const _op=window.openProdModal;
-  if(_op)window.openProdModal=function(){const r=_op.apply(this,arguments);curItem=null;const h=$("ral60Hint");if(h)h.innerHTML="";return r;};
+  if(_op)window.openProdModal=function(){const r=_op.apply(this,arguments);curItem=null;hint();return r;};
   function hint(){
-    const wrap=$("pmSwatchTabsWrap");if(!wrap)return;
-    let h=$("ral60Hint");if(!h){h=document.createElement("div");h.id="ral60Hint";h.className="ral60-hint";wrap.parentNode.insertBefore(h,wrap);}
-    const it=curItem;if(!it){h.innerHTML="";return;}
-    const L=refsFor(it).filter(x=>x.sw||1);
-    if(!L.length){h.innerHTML="";return;}
-    h.innerHTML=`🎨 Oznake ove boje: ${L.map((x,i)=>`<button type="button" class="ral60-p${x.sw?" b":""}" onclick="ral60Add(${i})" title="${x.sw?"Dodaj nijansu ove oznake":"Nijansa nije poznata – samo oznaka"}">${x.sw?`<span class="color-swatch" style="background:${esc(x.sw)}"></span>`:""}${x.sys} ${x.num}${x.sw?" +":""}</button>`).join(" ")}`;
+    const ralBox=$("swatchModeRal"),input=$("pmColorSearch");if(!ralBox||!input)return;
+    let h=$("ral60Hint");if(!h){h=document.createElement("div");h.id="ral60Hint";h.className="ral60-hint";ralBox.insertBefore(h,input);}
+    let lbl=$("ral60SearchLbl");if(!lbl){lbl=document.createElement("div");lbl.id="ral60SearchLbl";lbl.className="ral60-searchlbl";lbl.textContent="Ili pretraži/dodaj drugu oznaku:";ralBox.insertBefore(lbl,input);}
+    const it=curItem;
+    const L=it?refsFor(it):[];
+    if(!L.length){h.innerHTML="";lbl.style.display="none";return;}
+    lbl.style.display="";
+    h.innerHTML=`<div class="ral60-hint-t">🎨 Poznate oznake ovog proizvoda (klik = odmah dodano):</div><div class="ral60-hint-row">${L.map((x,i)=>`<button type="button" class="ral60-p${x.sw?" b":""}" onclick="ral60Add(${i})" title="${x.sw?"Dodaj nijansu ove oznake":"Nijansa nije poznata – samo oznaka"}">${x.sw?`<span class="color-swatch" style="background:${esc(x.sw)}"></span>`:""}${x.sys} ${x.num}${x.sw?" +":""}</button>`).join(" ")}</div>`;
   }
   window.ral60Add=i=>{const it=curItem;if(!it)return;const x=refsFor(it)[i];if(!x||!x.sw){showToast("Za ovu oznaku nijansa nije poznata – odaberi je na kotaču ili u RAL pretrazi");return;}
     if(typeof pmSwatches!=="undefined"){if(!pmSwatches.includes(x.sw))pmSwatches.push(x.sw);renderSwatchEditor(pmSwatches);showToast(`✓ Dodana nijansa ${x.sys} ${x.num}`);}};
